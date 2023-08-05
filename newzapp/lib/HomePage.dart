@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newzapp/Services/Top.dart';
 import 'package:newzapp/Services/services.dart';
+import 'package:newzapp/fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -64,16 +65,13 @@ class HomePage extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Container(
-                                          //height: 200,
-                                          width: 200,
-                                          child: Text(
-                                            snapshot.data![index]['title'],
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 3,
-                                            style:
-                                                TextStyle(color: Colors.amber),
-                                          ),
-                                        ),
+                                            //height: 200,
+                                            width: 200,
+                                            child: text(0,
+                                                data: snapshot.data![index]
+                                                    ['title'],
+                                                color: Colors.white,
+                                                size: 20)),
                                         Row(
                                           children: [
                                             Container(

@@ -10,7 +10,7 @@ class Top extends StatelessWidget {
     return Container(
       height: 430,
       child: FutureBuilder(
-          future: fetchWallStreetData(),
+          future: fetchUsBusinessData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
@@ -48,13 +48,15 @@ class Top extends StatelessWidget {
                               bottom: 20,
                               left: 10,
                               child: Container(
-                                //height: 200,
-                                ///width: 200,
-                                child: text(
-                                 data: snapshot.data![index]['title'],
-                                   color: Colors.white, size: 10 
-                                ),
-                              ),
+                                  //height: 200,
+                                  width: 200,
+                                  child: text(
+                                    0,
+                                    data: snapshot.data![index]['title'],
+                                    color: Colors.white,
+                                    size: 13,
+                                    Bold: FontWeight.bold,
+                                  )),
                             ),
                           ],
                         ),
