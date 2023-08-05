@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newzapp/Services/services.dart';
-import 'package:newzapp/fonts.dart';
+import 'package:newzapp/widget/fonts.dart';
 
 class Top extends StatelessWidget {
   const Top({super.key});

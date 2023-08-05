@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newzapp/HomePage.dart';
-import 'package:newzapp/Services/Top.dart';
+import 'package:newzapp/screens/HomePage.dart';
+import 'package:newzapp/screens/Top.dart';
 
 class Landing extends StatelessWidget {
   const Landing({super.key});
@@ -12,7 +12,10 @@ class Landing extends StatelessWidget {
           title: Text('Home Page'),
         ),
         body: ListView(
-          children: [Top(), HomePage()],
+          children: [
+            Top(),
+            //HomePage()
+          ],
         ));
   }
 }

@@ -17,10 +17,17 @@ Future<List<dynamic>> fetchWallStreetData() async {
     throw Exception('Failed to fetch data from the API');
   }
 }
-
+//cbc-news
+//cnn
+//bbc-news
+//cbs-news
+//google-news
+//the-washington-post
+//nbc-news
+//usa-today
 Future<List<dynamic>> fetchUsBusinessData() async {
   var url = Uri.parse(
-      'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=02a212ded5af40528a0d30959c5dadf1');
+      'https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=02a212ded5af40528a0d30959c5dadf1');
 
   final response = await http.get(url);
 
@@ -32,20 +39,38 @@ Future<List<dynamic>> fetchUsBusinessData() async {
   }
 }
 
-Future<List<dynamic>> fetchRecords(String city) async {
-    //final response = await http.get(Uri.parse(AppUrl.Lahore));
-    final queryParameter = {
-      'q': city,
-      'appid': '1962c8af92e499cfaf0f17369aed0f0b',
-    };
-    final uri = Uri.https(
-        'api.openweathermap.org', '/data/2.5/weather', queryParameter);
-final response = await http.get(uri);
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
+// Future<void> fetchNews(String country) async {
+//   final queryParameters = {
+//     'country': country,
+//     'apiKey': '02a212ded5af40528a0d30959c5dadf1',
+//   };
 
-      return data["articles"];
-    } else {
-      throw Exception('Error');
-    }
+//   final uri = Uri.https('newsapi.org', '/v2/top-headlines', queryParameters);
+
+//   final response = await http.get(uri);
+
+//   if (response.statusCode == 200) {
+//     var data = jsonDecode(response.body);
+//     return data["articles"];
+//   } else {
+//     throw Exception('Error');
+//   }
+// }
+
+Future<void> fetchNews(String country) async {
+  final queryParameters = {
+    'country': country,
+    'apiKey': '02a212ded5af40528a0d30959c5dadf1',
+  };
+
+  final uri = Uri.https('newsapi.org', '/v2/top-headlines', queryParameters);
+
+  final response = await http.get(uri);
+
+  if (response.statusCode == 200) {
+    var data = jsonDecode(response.body);
+    return data["articles"];
+  } else {
+    throw Exception('Error');
   }
+}

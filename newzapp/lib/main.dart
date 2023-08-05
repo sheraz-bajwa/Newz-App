@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newzapp/HomePage.dart';
-import 'package:newzapp/Services/landing.dart';
+import 'package:newzapp/screens/HomePage.dart';
+import 'package:newzapp/screens/landing.dart';
 
 void main() {
   runApp(const MyApp());
