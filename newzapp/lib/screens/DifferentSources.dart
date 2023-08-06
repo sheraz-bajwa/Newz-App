@@ -72,6 +72,18 @@ class AllState extends State<All> {
                   child: Text("CBC"),
                 ),
                 PopupMenuItem(
+                  value: "the-wall-street-journal",
+                  child: Text("The Wall Street Journal"),
+                ),
+                PopupMenuItem(
+                  value: "bloomberg",
+                  child: Text("Bloomberg"),
+                ),
+                PopupMenuItem(
+                  value: "financial-post",
+                  child: Text("Financial Post"),
+                ),
+                PopupMenuItem(
                   value: "google-news",
                   child: Text("GOOGLE News"),
                 ),
@@ -93,123 +105,131 @@ class AllState extends State<All> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                fetchNews(_selectedSource);
-              },
-              child: Text('Get News'),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _news.length,
-                itemBuilder: (context, index) {
-                  String date = formatDate(
-                    _news[index]['publishedAt'] != null
-                        ? _news[index]['publishedAt']
-                        : 'Not Available',
-                  );
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              fetchNews(_selectedSource);
+            },
+            child: Text('Get News'),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _news.length,
+              itemBuilder: (context, index) {
+                String date = formatDate(
+                  _news[index]['publishedAt'] != null
+                      ? _news[index]['publishedAt']
+                      : 'Not Available',
+                );
 
-                  return Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2.0,
-                            blurRadius: 5.0,
-                            offset: const Offset(
-                                0, 3), // changes the position of the shadow
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 150,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: NetworkImage(
-                                          _news[index]['urlToImage'] != null
-                                              ? _news[index]['urlToImage']
-                                              : 'loading',
-                                        ),
-                                      )),
-                                ),
+                return Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2.0,
+                          blurRadius: 5.0,
+                          offset: const Offset(
+                              0, 3), // changes the position of the shadow
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 150,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                        _news[index]['urlToImage'] != null
+                                            ? _news[index]['urlToImage']
+                                            : 'loading',
+                                      ),
+                                    )),
                               ),
-                              Container(
-                                child: Expanded(
-                                  flex: 2,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        text(0,
-                                            data: _news[index]['title'] != null
-                                                ? _news[index]['title']
-                                                : 'Not Available',
-                                            color: Colors.black,
-                                            size: 15),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Column(
-                                            children: [
-                                              text(
-                                                0,
-                                                data: _news[index]['source']
-                                                            ['id'] !=
-                                                        null
-                                                    ? _news[index]['source']
-                                                        ['id']
-                                                    : 'Nill',
-                                                color: Colors.blueAccent,
-                                                size: 15,
-                                                Bold: FontWeight.bold,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text('.'),
-                                                  text(0,
-                                                      data: date,
-                                                      color: Colors.black,
-                                                      size: 15),
-                                                ],
-                                              )
-                                            ],
-                                          ),
+                            ),
+                            Container(
+                              child: Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      text(0,
+                                          data: _news[index]['title'] != null
+                                              ? _news[index]['title']
+                                              : 'Not Available',
+                                          color: Colors.black,
+                                          size: 15),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                text(
+                                                  0,
+                                                  data: _news[index]['source']
+                                                              ['id'] !=
+                                                          null
+                                                      ? _news[index]['source']
+                                                          ['id']
+                                                      : 'Nill',
+                                                  color: Colors.blueAccent,
+                                                  size: 15,
+                                                  Bold: FontWeight.bold,
+                                                ),
+                                                Text('.'),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text('.'),
+                                                text(
+                                                  0,
+                                                  data: date,
+                                                  color: Colors.black,
+                                                  size: 15,
+                                                  Bold: FontWeight.bold,
+                                                ),
+                                              ],
+                                            )
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
