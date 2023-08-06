@@ -10,12 +10,12 @@ class Landing extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Home Page'),
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.content_cut_rounded))
+          ],
         ),
         body: ListView(
-          children: [
-            Top(),
-            //HomePage()
-          ],
+          children: [Top(), HomePage()],
         ));
   }
 }

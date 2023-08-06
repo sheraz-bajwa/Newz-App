@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:newzapp/screens/AllCountryNewz.dart';
+import 'package:newzapp/screens/DifferentSources.dart';
 import 'package:newzapp/screens/HomePage.dart';
 import 'package:newzapp/screens/landing.dart';
 
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Landing(),
+      home: All(),
     );
   }
 }

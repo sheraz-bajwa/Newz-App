@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<List<dynamic>> fetchWallStreetData() async {
   var url = Uri.parse(
-      'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=02a212ded5af40528a0d30959c5dadf1');
+      'https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=02a212ded5af40528a0d30959c5dadf1');
 
   final response = await http.get(url);
 
@@ -17,6 +17,8 @@ Future<List<dynamic>> fetchWallStreetData() async {
     throw Exception('Failed to fetch data from the API');
   }
 }
+
+//al-jazeera-english
 //cbc-news
 //cnn
 //bbc-news
