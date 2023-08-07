@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import 'package:newzapp/screens/DifferentSources.dart';
 import 'package:newzapp/widget/fonts.dart';
 
 class NewsApp extends StatefulWidget {
@@ -43,6 +44,17 @@ class _NewsAppState extends State<NewsApp> {
     return Scaffold(
       appBar: AppBar(
         title: Text('News App'),
+        backgroundColor: Colors.deepPurple,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => All()),
+                );
+              },
+              icon: Icon(Icons.person_outlined))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

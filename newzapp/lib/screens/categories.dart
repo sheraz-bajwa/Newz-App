@@ -5,19 +5,19 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:newzapp/widget/fonts.dart';
 
-class All extends StatefulWidget {
+class AllCategories extends StatefulWidget {
   @override
-  AllState createState() => AllState();
+  AllCategoriesState createState() => AllCategoriesState();
 }
 
-class AllState extends State<All> {
+class AllCategoriesState extends State<AllCategories> {
   List<dynamic> _news = [];
-  String _selectedSource =
-      "bbc-news"; // Default source, you can change it to any default source
+  String _selectedcategories =
+      "business"; // Default source, you can change it to any default source
 
-  Future<void> fetchNews(String source) async {
+  Future<void> fetchNews(String categories) async {
     final queryParameters = {
-      'sources': source,
+      'q': categories,
       'apiKey': '02a212ded5af40528a0d30959c5dadf1',
     };
 
@@ -44,74 +44,125 @@ class AllState extends State<All> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('News App'),backgroundColor: Colors.deepPurple,
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (source) {
-              setState(() {
-                _selectedSource = source;
-              });
-              fetchNews(_selectedSource);
-            },
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  value: "bbc-news",
-                  child: Text("BBC News"),
-                ),
-                PopupMenuItem(
-                  value: "cnn",
-                  child: Text("CNN"),
-                ),
-                PopupMenuItem(
-                  value: "al-jazeera-english",
-                  child: Text("al-jazeera News"),
-                ),
-                PopupMenuItem(
-                  value: "cbc-news",
-                  child: Text("CBC"),
-                ),
-                PopupMenuItem(
-                  value: "the-wall-street-journal",
-                  child: Text("The Wall Street Journal"),
-                ),
-                PopupMenuItem(
-                  value: "bloomberg",
-                  child: Text("Bloomberg"),
-                ),
-                PopupMenuItem(
-                  value: "financial-post",
-                  child: Text("Financial Post"),
-                ),
-                PopupMenuItem(
-                  value: "google-news",
-                  child: Text("GOOGLE News"),
-                ),
-                PopupMenuItem(
-                  value: "the-washington-post",
-                  child: Text("The Washington Post News"),
-                ),
-                PopupMenuItem(
-                  value: "nbc-news",
-                  child: Text("NBC News"),
-                ),
-                PopupMenuItem(
-                  value: "usa-today",
-                  child: Text("USA Today News"),
-                ),
-                // Add more sources as needed...
-              ];
-            },
-          ),
-        ],
+        title: Text('News App'),
+        backgroundColor: Colors.deepPurple,
+       
       ),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              fetchNews(_selectedSource);
-            },
-            child: Text('Get News'),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "health";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('Health'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "general";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('General'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "war";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('War'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "bitcoin";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('Bitcoin'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "love";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('Love'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "science";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('Science'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ////
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "entertainment";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('Entertainment'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "technology";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('Technology'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedcategories = "sports";
+                    });
+                    fetchNews(_selectedcategories);
+                  },
+                  child: Text('Sports'),
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: ListView.builder(

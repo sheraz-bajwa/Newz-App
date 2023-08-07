@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newzapp/screens/AllCountryNewz.dart';
 import 'package:newzapp/screens/DifferentSources.dart';
 import 'package:newzapp/screens/HomePage.dart';
+import 'package:newzapp/screens/categories.dart';
 import 'package:newzapp/screens/landing.dart';
 
 void main() {
@@ -15,12 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: All(),
+      home: AllCategories(),
     );
   }
 }
