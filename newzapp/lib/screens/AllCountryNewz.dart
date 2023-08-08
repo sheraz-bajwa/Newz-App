@@ -5,12 +5,12 @@ import 'package:intl/intl.dart';
 import 'package:newzapp/screens/DifferentSources.dart';
 import 'package:newzapp/widget/fonts.dart';
 
-class NewsApp extends StatefulWidget {
+class AllCounties extends StatefulWidget {
   @override
-  _NewsAppState createState() => _NewsAppState();
+  AllCountiesState createState() => AllCountiesState();
 }
 
-class _NewsAppState extends State<NewsApp> {
+class AllCountiesState extends State<AllCounties> {
   TextEditingController _countryController = TextEditingController();
   List<dynamic> _news = [];
 
@@ -42,24 +42,41 @@ class _NewsAppState extends State<NewsApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('News App'),
-        backgroundColor: Colors.deepPurple,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => All()),
-                );
-              },
-              icon: Icon(Icons.person_outlined))
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Image.asset(
+                    'assets/previous.png',
+                    height: 35,
+                    width: 35,
+                  ),
+                ),
+                text(
+                  0,
+                  data: _countryController.text,
+                  color: Colors.black,
+                  size: 30,
+                  Bold: FontWeight.bold,
+                ),
+                text(
+                  0,
+                  data: '.',
+                  color: Colors.white,
+                  size: 0,
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
             TextField(
                 controller: _countryController,
                 // decoration: InputDecoration(
@@ -68,12 +85,13 @@ class _NewsAppState extends State<NewsApp> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(width: 1, color: Color(0xffE6E8EB)),
+                    borderSide: BorderSide(
+                        width: 1, color: Color.fromARGB(255, 194, 199, 206)),
                   ),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide:
-                          BorderSide(width: 1, color: Color(0xffE6E8EB))),
+                      borderSide: BorderSide(
+                          width: 1, color: Color.fromARGB(255, 34, 86, 163))),
                   hintText: 'Enter country code (e.g., in, us)',
                   hintStyle: TextStyle(color: Colors.black),
                 )),
@@ -96,91 +114,97 @@ class _NewsAppState extends State<NewsApp> {
                         : 'Not Available',
                   );
 
-                  return Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2.0,
-                            blurRadius: 5.0,
-                            offset: const Offset(
-                                0, 3), // changes the position of the shadow
-                          ),
-                        ],
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 10,
                       ),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 150,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: NetworkImage(
-                                          _news[index]['urlToImage'] != null
-                                              ? _news[index]['urlToImage']
-                                              : 'loading',
-                                        ),
-                                      )),
-                                ),
-                              ),
-                              Container(
-                                child: Expanded(
-                                  flex: 2,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        text(0,
-                                            data: _news[index]['title'] != null
-                                                ? _news[index]['title']
-                                                : 'Not Available',
-                                            color: Colors.black,
-                                            size: 15),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              text(
-                                                0,
-                                                data: _news[index]['source']
-                                                            ['id'] !=
-                                                        null
-                                                    ? _news[index]['source']
-                                                        ['id']
-                                                    : 'Nill',
-                                                color: Colors.blueAccent,
-                                                size: 15,
-                                                Bold: FontWeight.bold,
-                                              ),
-                                              text(0,
-                                                  data: date,
-                                                  color: Colors.black,
-                                                  size: 15)
-                                            ],
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2.0,
+                              blurRadius: 5.0,
+                              offset: const Offset(
+                                  0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 150,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: NetworkImage(
+                                            _news[index]['urlToImage'] != null
+                                                ? _news[index]['urlToImage']
+                                                : 'loading',
                                           ),
-                                        ),
-                                      ],
+                                        )),
+                                  ),
+                                ),
+                                Container(
+                                  child: Expanded(
+                                    flex: 2,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          text(0,
+                                              data:
+                                                  _news[index]['title'] != null
+                                                      ? _news[index]['title']
+                                                      : 'Not Available',
+                                              color: Colors.black,
+                                              size: 15),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                text(
+                                                  0,
+                                                  data: _news[index]['source']
+                                                              ['id'] !=
+                                                          null
+                                                      ? _news[index]['source']
+                                                          ['id']
+                                                      : 'Nill',
+                                                  color: Colors.blueAccent,
+                                                  size: 15,
+                                                  Bold: FontWeight.bold,
+                                                ),
+                                                text(0,
+                                                    data: date,
+                                                    color: Colors.black,
+                                                    size: 15)
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
+                    ],
                   );
                 },
               ),

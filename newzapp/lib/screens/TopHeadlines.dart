@@ -22,51 +22,11 @@ class Top extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    return
-                        //InkWell(
-                        //     child: Padding(
-                        //   padding: const EdgeInsets.all(10.0),
-                        //   child: Container(
-                        //     decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(20),
-                        //       //color: Colors.black
-                        //     ),
-                        //     //margin: EdgeInsets.all(10),
-                        //     height: 150,
-                        //     width: 200,
-                        //     child: Column(
-                        //       children: [
-                        //         Container(
-                        //           decoration: BoxDecoration(
-                        //             borderRadius: BorderRadius.circular(20),
-                        //             image: DecorationImage(
-                        //               fit: BoxFit.fill,
-                        //               image: NetworkImage(
-                        //                   snapshot.data![index]['urlToImage']),
-                        //             ),
-                        //           ),
-                        //           width: 200,
-                        //           height: 200,
-                        //         ),
-                        //         SizedBox(
-                        //           height: 5,
-                        //         ),
-                        //         Container(
-                        //           height: 70,
-                        //           child: text(0,
-                        //               data: snapshot.data![index]['title'],
-                        //               color: Colors.white,
-                        //               Bold: FontWeight.bold,
-                        //               size: 20),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ));
-                        Row(
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: 20,
+                          width: 15,
                         ),
                         Stack(
                           children: [

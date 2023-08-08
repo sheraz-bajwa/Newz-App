@@ -43,125 +43,154 @@ class AllCategoriesState extends State<AllCategories> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('News App'),
-        backgroundColor: Colors.deepPurple,
-       
-      ),
       body: Column(
         children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 30, 0, 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "health";
-                    });
-                    fetchNews(_selectedcategories);
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
                   },
-                  child: Text('Health'),
+                  child: Image.asset(
+                    'assets/previous.png',
+                    height: 35,
+                    width: 35,
+                  ),
                 ),
-                SizedBox(
-                  width: 10,
+                text(
+                  0,
+                  data: _selectedcategories,
+                  color: Colors.black,
+                  size: 30,
+                  Bold: FontWeight.bold,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "general";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('General'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "war";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('War'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "bitcoin";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('Bitcoin'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "love";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('Love'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "science";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('Science'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ////
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "entertainment";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('Entertainment'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "technology";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('Technology'),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _selectedcategories = "sports";
-                    });
-                    fetchNews(_selectedcategories);
-                  },
-                  child: Text('Sports'),
-                ),
+                text(
+                  0,
+                  data: '.',
+                  color: Colors.white,
+                  size: 0,
+                )
               ],
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "health";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('Health'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "general";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('General'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "war";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('War'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "bitcoin";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('Bitcoin'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "love";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('Love'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "science";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('Science'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ////
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "entertainment";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('Entertainment'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "technology";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('Technology'),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedcategories = "sports";
+                      });
+                      fetchNews(_selectedcategories);
+                    },
+                    child: Text('Sports'),
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(

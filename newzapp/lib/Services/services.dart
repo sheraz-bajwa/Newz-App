@@ -29,7 +29,7 @@ Future<List<dynamic>> fetchWallStreetData() async {
 //usa-today
 Future<List<dynamic>> fetchUsBusinessData() async {
   var url = Uri.parse(
-      'https://newsapi.org/v2/top-headlines?sources=cnn?category=business&apiKey=02a212ded5af40528a0d30959c5dadf1');
+      'https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=02a212ded5af40528a0d30959c5dadf1');
 
   final response = await http.get(url);
 

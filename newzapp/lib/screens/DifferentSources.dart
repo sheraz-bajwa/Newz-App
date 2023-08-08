@@ -43,70 +43,93 @@ class AllState extends State<All> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('News App'),backgroundColor: Colors.deepPurple,
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (source) {
-              setState(() {
-                _selectedSource = source;
-              });
-              fetchNews(_selectedSource);
-            },
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  value: "bbc-news",
-                  child: Text("BBC News"),
-                ),
-                PopupMenuItem(
-                  value: "cnn",
-                  child: Text("CNN"),
-                ),
-                PopupMenuItem(
-                  value: "al-jazeera-english",
-                  child: Text("al-jazeera News"),
-                ),
-                PopupMenuItem(
-                  value: "cbc-news",
-                  child: Text("CBC"),
-                ),
-                PopupMenuItem(
-                  value: "the-wall-street-journal",
-                  child: Text("The Wall Street Journal"),
-                ),
-                PopupMenuItem(
-                  value: "bloomberg",
-                  child: Text("Bloomberg"),
-                ),
-                PopupMenuItem(
-                  value: "financial-post",
-                  child: Text("Financial Post"),
-                ),
-                PopupMenuItem(
-                  value: "google-news",
-                  child: Text("GOOGLE News"),
-                ),
-                PopupMenuItem(
-                  value: "the-washington-post",
-                  child: Text("The Washington Post News"),
-                ),
-                PopupMenuItem(
-                  value: "nbc-news",
-                  child: Text("NBC News"),
-                ),
-                PopupMenuItem(
-                  value: "usa-today",
-                  child: Text("USA Today News"),
-                ),
-                // Add more sources as needed...
-              ];
-            },
-          ),
-        ],
-      ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Image.asset(
+                    'assets/previous.png',
+                    height: 35,
+                    width: 35,
+                  ),
+                ),
+                text(
+                  0,
+                  data: _selectedSource,
+                  color: Colors.black,
+                  size: 30,
+                  Bold: FontWeight.bold,
+                ),
+                PopupMenuButton<String>(
+                  onSelected: (source) {
+                    setState(() {
+                      _selectedSource = source;
+                    });
+                    fetchNews(_selectedSource);
+                  },
+                  itemBuilder: (BuildContext context) {
+                    return [
+                      PopupMenuItem(
+                        value: "bbc-news",
+                        child: Text("BBC News"),
+                      ),
+                      PopupMenuItem(
+                        value: "cnn",
+                        child: Text("CNN"),
+                      ),
+                      PopupMenuItem(
+                        value: "al-jazeera-english",
+                        child: Text("al-jazeera News"),
+                      ),
+                      PopupMenuItem(
+                        value: "cbc-news",
+                        child: Text("CBC"),
+                      ),
+                      PopupMenuItem(
+                        value: "the-wall-street-journal",
+                        child: Text("The Wall Street Journal"),
+                      ),
+                      PopupMenuItem(
+                        value: "bloomberg",
+                        child: Text("Bloomberg"),
+                      ),
+                      PopupMenuItem(
+                        value: "financial-post",
+                        child: Text("Financial Post"),
+                      ),
+                      PopupMenuItem(
+                        value: "google-news",
+                        child: Text("GOOGLE News"),
+                      ),
+                      PopupMenuItem(
+                        value: "the-washington-post",
+                        child: Text("The Washington Post News"),
+                      ),
+                      PopupMenuItem(
+                        value: "nbc-news",
+                        child: Text("NBC News"),
+                      ),
+                      PopupMenuItem(
+                        value: "usa-today",
+                        child: Text("USA Today News"),
+                      ),
+                      // Add more sources as needed...
+                    ];
+                  },
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           ElevatedButton(
             onPressed: () {
               fetchNews(_selectedSource);
