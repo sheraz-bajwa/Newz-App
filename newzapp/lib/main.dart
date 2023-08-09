@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:newzapp/screens/AllCountryNewz.dart';
 import 'package:newzapp/screens/DifferentSources.dart';
+import 'package:newzapp/screens/SplashScreen.dart';
 import 'package:newzapp/screens/TechCrunch.dart';
+import 'package:newzapp/screens/TopHeadlines.dart';
 import 'package:newzapp/screens/categories.dart';
 import 'package:newzapp/screens/landing.dart';
 
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        //textTheme: TextTheme(titleMedium: TextStyle(color: Colors.amber))
       ),
       home: Landing(),
     );

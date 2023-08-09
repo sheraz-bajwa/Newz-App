@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newzapp/Services/services.dart';
 import 'package:newzapp/widget/fonts.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Top extends StatelessWidget {
   const Top({super.key});

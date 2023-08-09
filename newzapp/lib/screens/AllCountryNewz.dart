@@ -42,41 +42,33 @@ class AllCountiesState extends State<AllCounties> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: text(
+          0,
+          data: _countryController.text.toUpperCase(),
+          color: Colors.black,
+          size: 30,
+          Bold: FontWeight.bold,
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Image.asset(
+              'assets/previous.png',
+              height: 15,
+              width: 15,
+            ),
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/previous.png',
-                    height: 35,
-                    width: 35,
-                  ),
-                ),
-                text(
-                  0,
-                  data: _countryController.text,
-                  color: Colors.black,
-                  size: 30,
-                  Bold: FontWeight.bold,
-                ),
-                text(
-                  0,
-                  data: '.',
-                  color: Colors.white,
-                  size: 0,
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
             TextField(
                 controller: _countryController,
                 // decoration: InputDecoration(
@@ -92,7 +84,7 @@ class AllCountiesState extends State<AllCounties> {
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
                           width: 1, color: Color.fromARGB(255, 34, 86, 163))),
-                  hintText: 'Enter country code (e.g., in, us)',
+                  hintText: 'Enter country code (e.g., in, us, gb, ch, jp,)',
                   hintStyle: TextStyle(color: Colors.black),
                 )),
             SizedBox(

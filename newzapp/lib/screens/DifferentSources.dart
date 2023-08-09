@@ -43,90 +43,145 @@ class AllState extends State<All> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/previous.png',
-                    height: 35,
-                    width: 35,
-                  ),
-                ),
-                text(
-                  0,
-                  data: _selectedSource,
-                  color: Colors.black,
-                  size: 30,
-                  Bold: FontWeight.bold,
-                ),
-                PopupMenuButton<String>(
-                  onSelected: (source) {
-                    setState(() {
-                      _selectedSource = source;
-                    });
-                    fetchNews(_selectedSource);
-                  },
-                  itemBuilder: (BuildContext context) {
-                    return [
-                      PopupMenuItem(
-                        value: "bbc-news",
-                        child: Text("BBC News"),
-                      ),
-                      PopupMenuItem(
-                        value: "cnn",
-                        child: Text("CNN"),
-                      ),
-                      PopupMenuItem(
-                        value: "al-jazeera-english",
-                        child: Text("al-jazeera News"),
-                      ),
-                      PopupMenuItem(
-                        value: "cbc-news",
-                        child: Text("CBC"),
-                      ),
-                      PopupMenuItem(
-                        value: "the-wall-street-journal",
-                        child: Text("The Wall Street Journal"),
-                      ),
-                      PopupMenuItem(
-                        value: "bloomberg",
-                        child: Text("Bloomberg"),
-                      ),
-                      PopupMenuItem(
-                        value: "financial-post",
-                        child: Text("Financial Post"),
-                      ),
-                      PopupMenuItem(
-                        value: "google-news",
-                        child: Text("GOOGLE News"),
-                      ),
-                      PopupMenuItem(
-                        value: "the-washington-post",
-                        child: Text("The Washington Post News"),
-                      ),
-                      PopupMenuItem(
-                        value: "nbc-news",
-                        child: Text("NBC News"),
-                      ),
-                      PopupMenuItem(
-                        value: "usa-today",
-                        child: Text("USA Today News"),
-                      ),
-                      // Add more sources as needed...
-                    ];
-                  },
-                ),
-              ],
+      appBar: AppBar(
+        centerTitle: true,
+        title: text(
+          0,
+          data: _selectedSource.toUpperCase(),
+          color: Colors.black,
+          size: 30,
+          Bold: FontWeight.bold,
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Image.asset(
+              'assets/previous.png',
+              height: 15,
+              width: 15,
             ),
           ),
+        ),
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (source) {
+              setState(() {
+                _selectedSource = source;
+              });
+              fetchNews(_selectedSource);
+            },
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  value: "bbc-news",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'BBC News',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "cnn",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'CNN',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "al-jazeera-english",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'al jazeera English',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "cbc-news",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'CBC News',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "the-wall-street-journal",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'The Wall Street journal',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "bloomberg",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'Bloomberg',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "financial-post",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'Financial Post',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "google-news",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'Google News',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "the-washington-post",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'The Washington Post',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "nbc-news",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'NBC News',
+                    size: 15,
+                  ),
+                ),
+                PopupMenuItem(
+                  value: "usa-today",
+                  child: text(
+                    0,
+                    color: Colors.black,
+                    data: 'USA Today ',
+                    size: 15,
+                  ),
+                ),
+                // Add more sources as needed...
+              ];
+            },
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
           SizedBox(
             height: 20,
           ),

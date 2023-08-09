@@ -12,6 +12,33 @@ class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.onSecondary,
+        appBar: AppBar(
+          title: text(
+            0,
+            data: 'The News',
+            color: Color.fromARGB(255, 58, 58, 58),
+            size: 30,
+            Bold: FontWeight.bold,
+          ),
+          centerTitle: true,
+          leading: Builder(
+            builder: (context) {
+              return GestureDetector(
+                onTap: () => Scaffold.of(context).openDrawer(),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Image.asset(
+                    'assets/menus.png',
+                    height: 20,
+                    width: 20,
+                    color: const Color.fromARGB(255, 58, 58, 58),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
         drawer: ExampleSidebarX(),
         body: ListView(
           children: [
@@ -20,26 +47,6 @@ class Landing extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Builder(
-                    builder: (context) {
-                      return GestureDetector(
-                        onTap: () => Scaffold.of(context).openDrawer(),
-                        child: Image.asset(
-                          'assets/menus.png',
-                          height: 40,
-                          width: 40,
-                          color: Colors.black,
-                        ),
-                      );
-                    },
-                  ),
-                  text(
-                    0,
-                    data: 'The News',
-                    color: Colors.black,
-                    size: 40,
-                    Bold: FontWeight.bold,
-                  ),
                   text(
                     0,
                     data: '.',
@@ -61,6 +68,9 @@ class Landing extends StatelessWidget {
                     data: 'Top Headlines',
                     color: Colors.black,
                     size: 33,
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Top(),
                   SizedBox(

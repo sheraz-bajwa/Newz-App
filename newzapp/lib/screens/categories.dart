@@ -42,40 +42,33 @@ class AllCategoriesState extends State<AllCategories> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 30, 0, 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/previous.png',
-                    height: 35,
-                    width: 35,
-                  ),
-                ),
-                text(
-                  0,
-                  data: _selectedcategories,
-                  color: Colors.black,
-                  size: 30,
-                  Bold: FontWeight.bold,
-                ),
-                text(
-                  0,
-                  data: '.',
-                  color: Colors.white,
-                  size: 0,
-                )
-              ],
+    return Scaffold(appBar: AppBar(
+        centerTitle: true,
+        title: text(
+          0,
+          data: _selectedcategories.toUpperCase(),
+          color: Colors.black,
+          size: 30,
+          Bold: FontWeight.bold,
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Image.asset(
+              'assets/previous.png',
+              height: 15,
+              width: 15,
             ),
           ),
+        ),
+      ),
+      
+      body: Column(
+        children: [
+          
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Padding(
