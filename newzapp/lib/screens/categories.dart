@@ -42,7 +42,8 @@ class AllCategoriesState extends State<AllCategories> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
         centerTitle: true,
         title: text(
           0,
@@ -65,10 +66,8 @@ class AllCategoriesState extends State<AllCategories> {
           ),
         ),
       ),
-      
       body: Column(
         children: [
-          
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Padding(

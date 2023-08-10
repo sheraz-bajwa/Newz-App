@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:newzapp/Services/services.dart';
 import 'package:newzapp/widget/fonts.dart';
 import 'package:shimmer/shimmer.dart';
@@ -12,7 +13,51 @@ class Top extends StatelessWidget {
         future: fetchUsBusinessData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Container(
+              height: 230,
+              width: double.infinity,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    return Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade400,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                                height: 200,
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors
+                                      .white, // Background color of the shimmering tile
+                                )),
+                          ),
+                        ],
+                      ),
+                      // subtitle: Container(
+                      //   height: 10,
+                      //   width: double.infinity,
+                      //   color: Colors.white,
+                      // ),
+                    );
+                  }),
+            );
+            // Shimmer.fromColors(
+            //   baseColor: Colors.grey.shade200,
+            //   highlightColor: Colors.grey.shade400,
+            //   child: Container(
+            //       height: 230,
+            //       width: 200,
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(20),
+            //         color:
+            //             Colors.white, // Background color of the shimmering tile
+            //       )),
+            // );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {

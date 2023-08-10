@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:newzapp/screens/TopHeadlines.dart';
 import 'package:newzapp/Services/services.dart';
 import 'package:newzapp/widget/fonts.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,7 +20,64 @@ class HomePage extends StatelessWidget {
           future: fetchWallStreetData(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Container(
+                height: 800,
+                child: ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Shimmer.fromColors(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                      height: 150,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors
+                                            .white, // Background color of the shimmering tile
+                                      )),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                          height: 40,
+                                          width: 250,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors
+                                                .white, // Background color of the shimmering tile
+                                          )),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                          height: 40,
+                                          width: 250,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors
+                                                .white, // Background color of the shimmering tile
+                                          )),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade400,
+                      );
+                    }),
+              );
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else {

@@ -12,7 +12,7 @@ class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.onSecondary,
+        backgroundColor: Color.fromRGBO(224, 217, 238, 1),
         appBar: AppBar(
           title: text(
             0,

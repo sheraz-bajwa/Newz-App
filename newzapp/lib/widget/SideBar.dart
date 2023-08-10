@@ -4,6 +4,7 @@ import 'package:newzapp/screens/AllCountryNewz.dart';
 import 'package:newzapp/screens/DifferentSources.dart';
 import 'package:newzapp/screens/categories.dart';
 import 'package:newzapp/screens/landing.dart';
+import 'package:newzapp/widget/fonts.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class ExampleSidebarX extends StatelessWidget {
@@ -23,7 +24,7 @@ class ExampleSidebarX extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           hoverColor: scaffoldBackgroundColor,
-          textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+          textStyle: TextStyle(color: canvasColor),
           selectedTextStyle: const TextStyle(color: Colors.white),
           itemTextPadding: const EdgeInsets.only(left: 30),
           selectedItemTextPadding: const EdgeInsets.only(left: 30),
@@ -47,7 +48,7 @@ class ExampleSidebarX extends StatelessWidget {
             ],
           ),
           iconTheme: IconThemeData(
-            color: Colors.white.withOpacity(0.7),
+            color: canvasColor,
             size: 20,
           ),
           selectedIconTheme: const IconThemeData(
@@ -58,7 +59,7 @@ class ExampleSidebarX extends StatelessWidget {
         extendedTheme: const SidebarXTheme(
           width: 200,
           decoration: BoxDecoration(
-            color: canvasColor,
+            color: extendedcolor,
           ),
         ),
         footerDivider: divider,
@@ -68,8 +69,15 @@ class ExampleSidebarX extends StatelessWidget {
             child: SizedBox(
               height: 100,
               child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Image.asset('assets/MyTime.png'),
+                padding: const EdgeInsets.all(16.0),
+                child: text(
+                  0,
+                  data: 'The News',
+                  color: canvasColor,
+                  size: 40,
+                  Bold: FontWeight.bold, 
+                ),
+                //Image.asset('assets/MyTime.png'),
               ),
             ),
           );
@@ -128,6 +136,7 @@ class ExampleSidebarX extends StatelessWidget {
 }
 
 const primaryColor = Color(0xFF685BFF);
+const extendedcolor = Color.fromRGBO(224, 217, 238, 1);
 const canvasColor = Color(0xFF2E2E48);
 const scaffoldBackgroundColor = Color.fromRGBO(70, 70, 103, 1);
 const accentCanvasColor = Color(0xFF3E3E61);
