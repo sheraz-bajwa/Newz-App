@@ -75,7 +75,7 @@ class ExampleSidebarX extends StatelessWidget {
                   data: 'The News',
                   color: canvasColor,
                   size: 40,
-                  Bold: FontWeight.bold, 
+                  Bold: FontWeight.bold,
                 ),
                 //Image.asset('assets/MyTime.png'),
               ),
@@ -136,7 +136,7 @@ class ExampleSidebarX extends StatelessWidget {
 }
 
 const primaryColor = Color(0xFF685BFF);
-const extendedcolor = Color.fromRGBO(224, 217, 238, 1);
+const extendedcolor = Color.fromRGBO(246, 241, 255, 1);
 const canvasColor = Color(0xFF2E2E48);
 const scaffoldBackgroundColor = Color.fromRGBO(70, 70, 103, 1);
 const accentCanvasColor = Color(0xFF3E3E61);

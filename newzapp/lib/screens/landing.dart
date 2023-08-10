@@ -12,8 +12,9 @@ class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(224, 217, 238, 1),
+        backgroundColor: Color.fromRGBO(246, 241, 255, 1),
         appBar: AppBar(
+          backgroundColor: Color.fromRGBO(246, 241, 255, 1),
           title: text(
             0,
             data: 'The News',

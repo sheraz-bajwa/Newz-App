@@ -44,9 +44,24 @@ class HomePage extends StatelessWidget {
                                     width: 10,
                                   ),
                                   Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                          height: 40,
+                                          height: 20,
+                                          width: 200,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors
+                                                .white, // Background color of the shimmering tile
+                                          )),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                          height: 20,
                                           width: 250,
                                           decoration: BoxDecoration(
                                             borderRadius:
@@ -58,7 +73,7 @@ class HomePage extends StatelessWidget {
                                         height: 10,
                                       ),
                                       Container(
-                                          height: 40,
+                                          height: 20,
                                           width: 250,
                                           decoration: BoxDecoration(
                                             borderRadius:

@@ -42,7 +42,9 @@ class AllCountiesState extends State<AllCounties> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(246, 241, 255, 1),
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(246, 241, 255, 1),
         centerTitle: true,
         title: text(
           0,
