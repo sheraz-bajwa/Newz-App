@@ -121,14 +121,9 @@ class ExampleSidebarX extends StatelessWidget {
                 );
               }),
           SidebarXItem(
-              iconWidget: FlutterLogo(size: 20),
-              label: 'Flutter',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AllCounties()),
-                );
-              }),
+              icon: Icons.settings,
+              label: 'Setting',
+              onTap: () {}),
         ],
       ),
     );

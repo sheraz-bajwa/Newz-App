@@ -74,38 +74,84 @@ class Top extends StatelessWidget {
                         SizedBox(
                           width: 15,
                         ),
-                        Stack(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Container(
-                              height: 350,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: NetworkImage(
-                                      snapshot.data![index]['urlToImage'],
+                        InkWell(
+                          onTap: () {
+                            Future<void> _showAlertDialog(
+                                BuildContext context) async {
+                              return showDialog<void>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    // icon: Icon(
+                                    //   Icons.abc,
+                                    //   color: Colors.amber,
+                                    // ),
+
+                                    title: Image.network(
+                                      snapshot.data![index]['urlToImage'] !=
+                                              null
+                                          ? snapshot.data![index]['urlToImage']
+                                          : 'loading',
                                     ),
-                                  )),
-                            ),
-                            Positioned(
-                              bottom: 20,
-                              left: 10,
-                              child: Container(
-                                  //height: 200,
-                                  width: 200,
-                                  child: text(
-                                    0,
-                                    data: snapshot.data![index]['title'],
-                                    color: Colors.white,
-                                    size: 13,
-                                    Bold: FontWeight.bold,
-                                  )),
-                            ),
-                          ],
+                                    //contentTextStyle: ,
+                                    content: text(
+                                      0,
+                                      color: Colors.black,
+                                      size: 15,
+                                      data: snapshot.data![index]['content'] !=
+                                              null
+                                          ? snapshot.data![index]['content']
+                                          : 'Not Available',
+                                    ),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        child: Text('OK'),
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pop(); // Close the dialog
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
+
+                            _showAlertDialog(context);
+                          },
+                          child: Stack(
+                            children: [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                height: 350,
+                                width: 200,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                        snapshot.data![index]['urlToImage'],
+                                      ),
+                                    )),
+                              ),
+                              Positioned(
+                                bottom: 20,
+                                left: 10,
+                                child: Container(
+                                    //height: 200,
+                                    width: 200,
+                                    child: text(
+                                      0,
+                                      data: snapshot.data![index]['title'],
+                                      color: Colors.white,
+                                      size: 13,
+                                      Bold: FontWeight.bold,
+                                    )),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     );

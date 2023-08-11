@@ -59,7 +59,7 @@ class AllCategoriesState extends State<AllCategories> {
             Navigator.pop(context);
           },
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(15.0),
             child: Image.asset(
               'assets/previous.png',
               height: 15,
@@ -197,106 +197,150 @@ class AllCategoriesState extends State<AllCategories> {
                       : 'Not Available',
                 );
 
-                return Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2.0,
-                          blurRadius: 5.0,
-                          offset: const Offset(
-                              0, 3), // changes the position of the shadow
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                height: 150,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                        _news[index]['urlToImage'] != null
-                                            ? _news[index]['urlToImage']
-                                            : 'loading',
-                                      ),
-                                    )),
+                return InkWell(onTap: () {
+                      Future<void> _showAlertDialog(
+                          BuildContext context) async {
+                        return showDialog<void>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              // icon: Icon(
+                              //   Icons.abc,
+                              //   color: Colors.amber,
+                              // ),
+
+                              title: Image.network(
+                                _news[index]['urlToImage'] != null
+                                    ? _news[index]['urlToImage']
+                                    : 'loading',
                               ),
-                            ),
-                            Container(
-                              child: Expanded(
-                                flex: 2,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      text(0,
-                                          data: _news[index]['title'] != null
-                                              ? _news[index]['title']
-                                              : 'Not Available',
-                                          color: Colors.black,
-                                          size: 15),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                text(
-                                                  0,
-                                                  data: _news[index]['source']
-                                                              ['id'] !=
-                                                          null
-                                                      ? _news[index]['source']
-                                                          ['id']
-                                                      : 'Nill',
-                                                  color: Colors.blueAccent,
-                                                  size: 15,
-                                                  Bold: FontWeight.bold,
-                                                ),
-                                                Text('.'),
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text('.'),
-                                                text(
-                                                  0,
-                                                  data: date,
-                                                  color: Colors.black,
-                                                  size: 15,
-                                                  Bold: FontWeight.bold,
-                                                ),
-                                              ],
-                                            )
-                                          ],
+                              //contentTextStyle: ,
+                              content: text(
+                                0,
+                                color: Colors.black,
+                                size: 15,
+                                data: _news[index]['content'] != null
+                                    ? _news[index]['content']
+                                    : 'Not Available',
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pop(); // Close the dialog
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+
+                      _showAlertDialog(context);
+                    },
+                    
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2.0,
+                            blurRadius: 5.0,
+                            offset: const Offset(
+                                0, 3), // changes the position of the shadow
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  height: 150,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                          _news[index]['urlToImage'] != null
+                                              ? _news[index]['urlToImage']
+                                              : 'loading',
                                         ),
-                                      ),
-                                    ],
+                                      )),
+                                ),
+                              ),
+                              Container(
+                                child: Expanded(
+                                  flex: 2,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                        text(0,
+                                            data: _news[index]['title'] != null
+                                                ? _news[index]['title']
+                                                : 'Not Available',
+                                            color: Colors.black,
+                                            size: 15),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  text(
+                                                    0,
+                                                    data: _news[index]['source']
+                                                                ['id'] !=
+                                                            null
+                                                        ? _news[index]['source']
+                                                            ['id']
+                                                        : 'Nill',
+                                                    color: Colors.blueAccent,
+                                                    size: 15,
+                                                    Bold: FontWeight.bold,
+                                                  ),
+                                                  Text('.'),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text('.'),
+                                                  text(
+                                                    0,
+                                                    data: date,
+                                                    color: Colors.black,
+                                                    size: 15,
+                                                    Bold: FontWeight.bold,
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );

@@ -107,102 +107,149 @@ class HomePage extends StatelessWidget {
                             ? snapshot.data![index]['publishedAt']
                             : 'Not Available',
                       );
-                      return Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2.0,
-                                blurRadius: 5.0,
-                                offset: const Offset(
-                                    0, 3), // changes the position of the shadow
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(
-                                      height: 150,
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                              snapshot.data![index]
-                                                          ['urlToImage'] !=
-                                                      null
-                                                  ? snapshot.data![index]
-                                                      ['urlToImage']
-                                                  : 'loading',
-                                            ),
-                                          )),
-                                    ),
+                      return InkWell(
+                        onTap: () {
+                          Future<void> _showAlertDialog(
+                              BuildContext context) async {
+                            return showDialog<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  // icon: Icon(
+                                  //   Icons.abc,
+                                  //   color: Colors.amber,
+                                  // ),
+
+                                  title: Image.network(
+                                    snapshot.data![index]['urlToImage'] != null
+                                        ? snapshot.data![index]['urlToImage']
+                                        : 'loading',
                                   ),
-                                  Container(
-                                    child: Expanded(
-                                      flex: 2,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-                                            text(0,
-                                                data: snapshot.data![index]
-                                                            ['title'] !=
+                                  //contentTextStyle: ,
+                                  content: text(
+                                    0,
+                                    color: Colors.black,
+                                    size: 15,
+                                    data:
+                                        snapshot.data![index]['content'] != null
+                                            ? snapshot.data![index]['content']
+                                            : 'Not Available',
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: Text('OK'),
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Close the dialog
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+
+                          _showAlertDialog(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2.0,
+                                  blurRadius: 5.0,
+                                  offset: const Offset(0,
+                                      3), // changes the position of the shadow
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(
+                                        height: 150,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                snapshot.data![index]
+                                                            ['urlToImage'] !=
                                                         null
                                                     ? snapshot.data![index]
-                                                        ['title']
-                                                    : 'Not Available',
-                                                color: Colors.black,
-                                                size: 15),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  text(
-                                                    0,
-                                                    data: snapshot.data![index]
-                                                                    ['source']
-                                                                ['id'] !=
-                                                            null
-                                                        ? snapshot.data![index]
-                                                            ['source']['id']
-                                                        : 'Nill',
-                                                    color: Colors.blueAccent,
-                                                    size: 15,
-                                                    Bold: FontWeight.bold,
-                                                  ),
-                                                  text(
-                                                    0,
-                                                    data: date,
-                                                    color: Colors.black,
-                                                    size: 15,
-                                                    Bold: FontWeight.bold,
-                                                  )
-                                                ],
+                                                        ['urlToImage']
+                                                    : 'loading',
                                               ),
-                                            ),
-                                          ],
+                                            )),
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Expanded(
+                                        flex: 2,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              text(0,
+                                                  data: snapshot.data![index]
+                                                              ['title'] !=
+                                                          null
+                                                      ? snapshot.data![index]
+                                                          ['title']
+                                                      : 'Not Available',
+                                                  color: Colors.black,
+                                                  size: 15),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    text(
+                                                      0,
+                                                      data: snapshot.data![
+                                                                          index]
+                                                                      ['source']
+                                                                  ['id'] !=
+                                                              null
+                                                          ? snapshot
+                                                                  .data![index]
+                                                              ['source']['id']
+                                                          : 'Nill',
+                                                      color: Colors.blueAccent,
+                                                      size: 15,
+                                                      Bold: FontWeight.bold,
+                                                    ),
+                                                    text(
+                                                      0,
+                                                      data: date,
+                                                      color: Colors.black,
+                                                      size: 15,
+                                                      Bold: FontWeight.bold,
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

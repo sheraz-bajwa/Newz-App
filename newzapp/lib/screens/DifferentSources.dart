@@ -36,26 +36,6 @@ class AllState extends State<All> {
     }
   }
 
-  Future<void> _showAlertDialog(BuildContext context) async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Alert Dialog Title'),
-          content: Text('This is the content of the alert dialog.'),
-          actions: <Widget>[
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   String formatDate(String dateString) {
     DateTime dateTime = DateTime.parse(dateString);
     return DateFormat('yyyy-MM-dd').format(dateTime);
@@ -80,7 +60,7 @@ class AllState extends State<All> {
             Navigator.pop(context);
           },
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(15.0),
             child: Image.asset(
               'assets/previous.png',
               height: 15,
@@ -89,13 +69,14 @@ class AllState extends State<All> {
           ),
         ),
         actions: [
+          //created pop menu & setstate to change the data to fetch data
           PopupMenuButton<String>(
             onSelected: (source) {
               setState(() {
                 _selectedSource = source;
               });
               fetchNews(_selectedSource);
-            },
+            }, //popup menu items
             itemBuilder: (BuildContext context) {
               return [
                 PopupMenuItem(
@@ -223,17 +204,34 @@ class AllState extends State<All> {
                       ? _news[index]['publishedAt']
                       : 'Not Available',
                 );
-
+//create the whole data in inkwell
                 return InkWell(
+                  //on tap create the alertdialog to show more sppecific data
                   onTap: () {
                     Future<void> _showAlertDialog(BuildContext context) async {
                       return showDialog<void>(
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text(_news[index]['title']),
-                            content: Text(
-                                'This is the content of the alert dialog.'),
+                            // icon: Icon(
+                            //   Icons.abc,
+                            //   color: Colors.amber,
+                            // ),
+
+                            title: Image.network(
+                              _news[index]['urlToImage'] != null
+                                  ? _news[index]['urlToImage']
+                                  : 'loading',
+                            ),
+                            //contentTextStyle: ,
+                            content: text(
+                              0,
+                              color: Colors.black,
+                              size: 15,
+                              data: _news[index]['content'] != null
+                                  ? _news[index]['content']
+                                  : 'Not Available',
+                            ),
                             actions: <Widget>[
                               TextButton(
                                 child: Text('OK'),

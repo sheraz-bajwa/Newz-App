@@ -39,6 +39,16 @@ class Landing extends StatelessWidget {
               );
             },
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AllCounties()),
+                  );
+                },
+                icon: Icon(Icons.search))
+          ],
         ),
         drawer: ExampleSidebarX(),
         body: ListView(

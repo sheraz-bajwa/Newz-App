@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         //textTheme: TextTheme(titleMedium: TextStyle(color: Colors.amber))
       ),
-      home: Landing(),
+      home: Splash(),
     );
   }
 }
